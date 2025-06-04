@@ -1,0 +1,5 @@
+#template
+AdminLTE/
+
+.htaccess
+modelos/conexion.php
