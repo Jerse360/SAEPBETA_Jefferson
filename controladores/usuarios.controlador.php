@@ -6,8 +6,6 @@ class ControladorUsuarios{
         if (isset($_POST["ingEmail"])){
             if (preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $_POST["ingEmail"]) && preg_match("/^[a-zA-Z0-9]+$/",$_POST["ingPassword"])){
 
-                // var_dump($_POST["ingEmail"]);
-                // var_dump($_POST["ingPassword"]);
 
                     $tabla = "usuarios";
                     $item = "email";
@@ -23,6 +21,8 @@ class ControladorUsuarios{
                         $_SESSION["nombres"]=$respuesta["nombres"];
                         $_SESSION["apellidos"]=$respuesta["apellidos"];
                         $_SESSION["idRol"]=$respuesta["rol_idrol"];
+
+                        echo '<script>window.location = "inicio";</script>';
 
                     }
 
