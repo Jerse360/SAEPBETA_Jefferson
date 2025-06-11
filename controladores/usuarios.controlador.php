@@ -13,15 +13,16 @@ class ControladorUsuarios{
 
                     $respuesta=ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
                     // var_dump($respuesta);
-
-                    if ($respuesta["email"] == $_POST["ingEmail"] && $respuesta["clave"]==$_POST["ingPassword"] && $respuesta["estado"]=="activo"){
-
+                    
+                    if ($respuesta["email"] == $_POST["ingEmail"] && $respuesta["clave"]==$_POST["ingPassword"] && $respuesta["estado"]=="Activo"){
+                        
                         $_SESSION["iniciarSesion"] = "ok";
-                        $_SESSION["idUsuario"]=$respuesta["idusuarios"];
+                        $_SESSION["idUsuario"]=$respuesta["ID_usuarios"];
                         $_SESSION["nombres"]=$respuesta["nombres"];
                         $_SESSION["apellidos"]=$respuesta["apellidos"];
-                        $_SESSION["idRol"]=$respuesta["rol_idrol"];
-
+                        $_SESSION["idRol"]=$respuesta["ID_rol"];
+                        
+                       
                         echo '<script>window.location = "inicio";</script>';
 
                     }

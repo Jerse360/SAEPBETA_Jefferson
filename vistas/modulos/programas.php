@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="col-sm-12">
-                    <button class="btn btn-primary btn-sm float-right"data-toggle="modal" data-target="#modalAgregarPrograma"> Agregar Programa</button>
+                    <button class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modalAgregarPrograma"> Agregar Programa</button>
                 </div>
 
 
@@ -35,87 +35,33 @@
                                 <tr>
                                     <th>Codigo</th>
                                     <th>Descripcion</th>
+                                    <th>Version</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
 
-                                <tr>
-                                    <td>001</td>
-                                    <td>Análisis y Desarrollo de Software</td>
-                                    <td><button class="btn btn-success btn-sm">Activo</button></td>
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>002</td>
-                                    <td>Gestión Administrativa</td>
-                                    <td><button class="btn btn-danger btn-sm">Inactivo</button></td>
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>003</td>
-                                    <td>Contabilidad y Finanzas</td>
-                                    <td><button class="btn btn-success btn-sm">Activo</button></td>
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>004</td>
-                                    <td>Gestión del Talento Humano</td>
-                                    <td><button class="btn btn-success btn-sm">Activo</button></td>
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>005</td>
-                                    <td>Diseño e Integración de Multimedia</td>
-                                    <td><button class="btn btn-success btn-sm">Activo</button></td>
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>006</td>
-                                    <td>Desarrollo de Videojuegos</td>
-                                    <td><button class="btn btn-success btn-sm">Activo</button></td>
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>007</td>
-                                    <td>Producción Multimedia</td>
-                                    <td><button class="btn btn-success btn-sm">Activo</button></td>
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>008</td>
-                                    <td>Mecánica Industrial</td>
-                                    <td><button class="btn btn-success btn-sm">Activo</button></td>
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>009</td>
-                                    <td>Gestión de Redes de Datos</td>
-                                    <td><button class="btn btn-success btn-sm">Activo</button></td>
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>010</td>
-                                    <td>Instalaciones Eléctricas</td>
-                                    <td><button class="btn btn-success btn-sm">Activo</button></td>
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <!-- 
-                                <?php for ($i = 1; $i <= 50; $i++): ?>
-                                    <tr>
-                                        <td><?php echo "SENA-" . str_pad($i, 3, "0", STR_PAD_LEFT); ?></td>
-                                        <td><?php echo "Programa de Formación " . $i; ?></td>
-                                        <td><?php echo ($i % 2 == 0) ? "Activo" : "Inactivo"; ?></td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <?php endfor; ?> -->
+                                $programas = ControladorProgramas::ctrMostrarProgramas();
+                                // var_dump($programas);
+                                foreach ($programas as $key => $value) {
+                                    echo '<tr>';
+                                    echo '<td>' . $value["ID_programas"] . '</td>';
+                                    echo '<td>' . $value["nombre_programa"] . '</td>';
+                                    echo '<td>' . $value["version_programa"] . '</td>';
+                                    if ($value["estado"] == "Activo") {
+                                        echo  '<td><button class="btn btn-success btn-sm">Activo</button></td>';
+                                    } else {
+                                        echo  '<td><button class="btn btn-danger btn-sm">Inactivo</button></td>';
+                                    }
+                                    echo '<td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>';
+                                    echo '</tr>';
+                                };
 
+                                ?>
                             </tbody>
+
                         </table>
                     </div>
 
@@ -130,58 +76,68 @@
  modal agregar programa
  =============== -->
 
- <div class="modal fade" id="modalAgregarPrograma">
-        <div class="modal-dialog">
-          <div class="modal-content">
+<div class="modal fade" id="modalAgregarPrograma">
+    <div class="modal-dialog">
+        <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Agregar programa de formación</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                <h4 class="modal-title">Agregar programa de formación</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            
-            <form action="" method="POST">
-             <div class="modal-body">
-                <label for="descripcionPrograma">Descripción</label>
-                <input type="text" class="form-control" name="descripcionPrograma" required>  
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Guardar</button>
-            </div>
-        </form>
-          </div>
-          <!-- /.modal-content -->
-          </div>
-        <!-- /.modal-dialog -->
-      </div>
 
-    <!-- ==========
+            <form method="POST">
+                <div class="modal-body">
+                    <label for="descripcionPrograma">Descripción</label>
+                    <input type="text" class="form-control" name="descripcionPrograma" required>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+                <?php
+
+                $crearPrograma = new ControladorProgramas();
+                $crearPrograma -> ctrCrearPrograma();
+
+
+                ?>
+
+
+
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- ==========
  modal editar programa
  =============== -->
 
- <div class="modal fade" id="modalEditarPrograma">
-        <div class="modal-dialog">
-          <div class="modal-content">
+<div class="modal fade" id="modalEditarPrograma">
+    <div class="modal-dialog">
+        <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Agregar programa de formación</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                <h4 class="modal-title">Agregar programa de formación</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            
+
             <form action="" method="POST">
-             <div class="modal-body">
-                <label for="descripcionPrograma">Descripción</label>
-                <input type="text" class="form-control" name="descripcionPrograma" required>  
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Guardar</button>
-            </div>
-        </form>
-          </div>
-          <!-- /.modal-content -->
-          </div>
-        <!-- /.modal-dialog -->
-      </div>  
+                <div class="modal-body">
+                    <label for="descripcionPrograma">Descripción</label>
+                    <input type="text" class="form-control" name="descripcionPrograma" required>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
