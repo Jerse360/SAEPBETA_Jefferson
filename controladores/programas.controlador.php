@@ -19,17 +19,20 @@
 
         static public function ctrCrearPrograma(){
 
-            if(isset($_POST["descripcionPrograma"])){
-                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["descripcionPrograma"])){
+            if(isset($_POST["descripcionPrograma"]) && isset($_POST["versionPrograma"])){
+                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["descripcionPrograma"]) &&
+                   preg_match('/^[a-zA-Z0-9_.-]+$/', $_POST["versionPrograma"])){
 
                     $tabla = "programas";
-                    $dato = $_POST["descripcionPrograma"];
+                    $datos = array(
+                        "nombre_programa" => $_POST["descripcionPrograma"],
+                        "version_programa" => $_POST["versionPrograma"]
+                    );
 
-                    $respuesta = ModeloProgramas::mdlIngresarPrograma($tabla, $dato);
+                    $respuesta = ModeloProgramas::mdlIngresarPrograma($tabla, $datos);
 
                     if($respuesta == "ok"){
                         echo '<script>
-
                         swal.fire({
                             type: "success",
                             title: "El programa ha sido guardado correctamente",
@@ -40,15 +43,10 @@
                                 window.location = "programas";
                                 }
                             })
-
                         </script>';
-                        
                     }
-                    
                 }
-                
             }
-            
         }
     }
 

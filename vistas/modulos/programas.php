@@ -90,6 +90,8 @@
                 <div class="modal-body">
                     <label for="descripcionPrograma">Descripción</label>
                     <input type="text" class="form-control" name="descripcionPrograma" required>
+                    <label for="versionPrograma" class="mt-2">Versión</label>
+                    <input type="text" class="form-control" name="versionPrograma" required>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
