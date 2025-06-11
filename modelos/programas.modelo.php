@@ -16,12 +16,11 @@
 
         }//fin de la funcion mdlMostrarProgramas
 
-        static public function mdlIngresarPrograma($tabla, $dato){
-
+        static public function mdlIngresarPrograma($tabla, $datos){
             try {
-                $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre_programa) VALUES (:nombre_programa)");
-
-                $stmt->bindParam(":nombre_programa", $dato, PDO::PARAM_STR);
+                $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre_programa, version_programa) VALUES (:nombre_programa, :version_programa)");
+                $stmt->bindParam(":nombre_programa", $datos["nombre_programa"], PDO::PARAM_STR);
+                $stmt->bindParam(":version_programa", $datos["version_programa"], PDO::PARAM_STR);
                 if($stmt->execute()){
                     return "ok";
                 }else{
@@ -32,9 +31,7 @@
             }finally{
                 $stmt -> closeCursor();
                 $stmt = null;
-
             }
-            
         }
 
 
