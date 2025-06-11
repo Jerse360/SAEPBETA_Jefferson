@@ -18,6 +18,9 @@ session_start();
   <link rel="stylesheet" href="vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="vistas/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="vistas/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="vistas/plugins/toastr/toastr.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="vistas/dist/css/adminlte.min.css">
 
@@ -40,6 +43,13 @@ session_start();
   <script src="vistas/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="vistas/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="vistas/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="../../plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="vistas/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <!-- Toastr -->
+  <script src="vistas/plugins/toastr/toastr.min.js"></script>
 
   <!-- AdminLTE App -->
   <script src="vistas/dist/js/adminlte.min.js"></script>
@@ -53,7 +63,7 @@ session_start();
   <!-- Site wrapper -->
 
   <?php
-  
+
 
   if (isset($_SESSION["iniciarSesion"])  &&  $_SESSION["iniciarSesion"] == "ok") {
 
@@ -100,7 +110,7 @@ session_start();
 
   ?>
 
- 
+
   <script src="vistas/js/plantilla.js"></script>
 
 </body>
