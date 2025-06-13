@@ -43,7 +43,8 @@
                             <tbody>
                                 <?php
 
-                                $programas = ControladorProgramas::ctrMostrarProgramas();
+                                $valor = null;
+                                $programas = ControladorProgramas::ctrMostrarProgramas($valor);
                                 // var_dump($programas);
                                 foreach ($programas as $key => $value) {
                                     echo '<tr>';
@@ -55,7 +56,7 @@
                                     } else {
                                         echo  '<td><button class="btn btn-danger btn-sm">Inactivo</button></td>';
                                     }
-                                    echo '<td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>';
+                                    echo '<td><button class="btn btn-xs btn-primary btnEditarPrograma" idprograma="' . $value["ID_programas"] . '" data-toggle="modal" data-target="#modalEditarPrograma"><i class="fas fa-pencil-alt"></i></button></td>';
                                     echo '</tr>';
                                 };
 
@@ -100,7 +101,7 @@
                 <?php
 
                 $crearPrograma = new ControladorProgramas();
-                $crearPrograma -> ctrCrearPrograma();
+                $crearPrograma->ctrCrearPrograma();
 
 
                 ?>
@@ -130,13 +131,24 @@
 
             <form action="" method="POST">
                 <div class="modal-body">
+                    <input type="hidden" class="form-control" id="editIdPrograma" name="editIdPrograma" required>
+
                     <label for="descripcionPrograma">Descripción</label>
-                    <input type="text" class="form-control" name="descripcionPrograma" required>
+                    <input type="text" class="form-control" id="editDescripcionPrograma" name="editDescripcionPrograma" required>
+                    <label for="descripcionPrograma">Versión</label>
+                    <input type="text" class="form-control" id="editVersionPrograma" name="editVersionPrograma" required>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
+                <?php
+                    $editarPrograma = new ControladorProgramas();
+                    $editarPrograma->ctrEditarprograma();
+
+                ?>
+
+
             </form>
         </div>
         <!-- /.modal-content -->

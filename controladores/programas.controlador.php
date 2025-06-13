@@ -6,9 +6,9 @@
         MOSTRAR PROGRAMAS
         =============================================*/
 
-        static public function ctrMostrarProgramas(){
-            
-            $respuesta = ModeloProgramas::mdlMostrarProgramas();
+        static public function ctrMostrarProgramas($valor){
+
+            $respuesta = ModeloProgramas::mdlMostrarProgramas($valor);
             return $respuesta;
             
         }//   fin metodo ctrMostrarProgramas
@@ -47,8 +47,44 @@
                     }
                 }
             }
-        }
-    }
+        }//fin metodo
+
+
+        static public function ctrEditarprograma(){
+
+            if (isset($_POST["editIdPrograma"])){
+                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["editDescripcionPrograma"]) &&
+                   preg_match('/^[a-zA-Z0-9_.-]+$/', $_POST["editVersionPrograma"])){ 
+                    
+                    $datos = array(
+                        "id_programa" => $_POST["editIdPrograma"],
+                        "descripcion_programa" => $_POST["editDescripcionPrograma"],
+                        "version_programa" => $_POST["editVersionPrograma"]
+                    );
+
+                    $respuesta = ModeloProgramas::mdlEditarprograma($datos);
+
+                    if ($respuesta = "ok"){
+                        echo '<script>
+                        swal.fire({
+                            type: "success",
+                            title: "El programa ha sido editado correctamente",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar"
+                            }).then(function(result){
+                                if(result.value){
+                                window.location = "programas";
+                                }
+                            })
+                        </script>';                     
+
+                    }
+                }//fin pregmatch                   
+
+            }//fin isset
+
+        }//fin metodo
+    }//fin clase
 
 
 
