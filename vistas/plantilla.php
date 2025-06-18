@@ -94,6 +94,7 @@ session_start();
         $_GET["ruta"] == "sedes" ||
         $_GET["ruta"] == "seguimiento" ||
         $_GET["ruta"] == "usuarios" ||
+        $_GET["ruta"] == "editarperfil" ||
         $_GET["ruta"] == "salir"
       ) {
         include "modulos/" . $_GET["ruta"] . ".php";
@@ -112,6 +113,7 @@ session_start();
 
 
   <script src="vistas/js/plantilla.js"></script>
+  <script src="vistas/js/programas.js"></script>
 
 </body>
 
