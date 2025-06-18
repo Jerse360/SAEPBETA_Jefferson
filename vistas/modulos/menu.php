@@ -185,7 +185,15 @@ aside.main-sidebar .brand-text {
                 Seguimiento
               </p>
             </a>
-          </li>            
+          </li>         
+      
+          
+          <li class="nav-item">
+            <a href="editarperfil" class="nav-link">
+              <img src="vistas/img/ico-perfil.png" alt="Icono Perfil">
+              <p>Mi Perfil</p>
+            </a>
+          </li>
 
 
 
