@@ -12,7 +12,7 @@ class ControladorUsuarios{
                     $valor = $_POST["ingEmail"];
 
                     $respuesta=ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
-                    // var_dump($respuesta);
+                    var_dump($respuesta);
                     
                     if ($respuesta["email"] == $_POST["ingEmail"] && $respuesta["clave"]==$_POST["ingPassword"] && $respuesta["estado"]=="Activo"){
                         
