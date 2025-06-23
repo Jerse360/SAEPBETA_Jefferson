@@ -14,7 +14,7 @@
         }//   fin metodo ctrMostrarProgramas
 
         /*=============================================
-        REGISTRO DE PROGRAMAS
+        REGISTRO DE SEDES
         =============================================*/
 
         static public function ctrCrearSedes(){

@@ -135,7 +135,7 @@
 
                     <label for="nombreSede">Nombre de la Sede</label>
                     <input type="text" class="form-control" id="editnombreSede" name="editnombreSede" required>
-                    <label for="direccionSede">direccion</label>
+                    <label for="DireccionSede">direccion</label>
                     <input type="text" class="form-control" id="editDireccionSede" name="editDireccionSede" required>
                 </div>
                 <div class="modal-footer justify-content-between">

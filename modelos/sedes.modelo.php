@@ -28,7 +28,7 @@
 
         static public function mdlIngresarSede($tabla, $datos){
             try {
-                $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre_sede, direccion) VALUES (:nombre_sede, :direccion)");
+                $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre_sede, direccion,estado) VALUES (:nombre_sede, :direccion, 'Activo')");
                 $stmt->bindParam(":nombre_sede", $datos["nombre_sede"], PDO::PARAM_STR);
                 $stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
                 if($stmt->execute()){
