@@ -33,6 +33,7 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>nombre</th>
                                     <th>Direccion</th>
                                     <th>Estado</th>
