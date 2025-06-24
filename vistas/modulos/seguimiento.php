@@ -34,232 +34,42 @@
                             <thead>
                                 <tr>
                                     <th>Codigo</th>
-                                    <th>Descripcion</th>
-                                    <th>Fecha y hora</th>
-                                    <th>Aprendiz</th>
+                                    <th>Nombre de Archivo</th>
+                                    <th>Fecha y Hora</th>
+                                    <th>Formato</th>
                                     <th>Observaciones</th>
+                                    <th>Validación</th>
                                     <th>Acciones</th>
                                     
                                 </tr>
                             </thead>
                             <tbody>
 
-                               <tr>
-    <td>01</td>
-    <td>Bitacora</td>
-    <td>2023-11-01 08:00</td>
-    <td>Juan Pérez</td>
-    <td>Registro inicial de actividades</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
-<tr>
-    <td>02</td>
-    <td>Evaluacion</td>
-    <td>2023-11-01 10:30</td>
-    <td>María Gómez</td>
-    <td>Evaluación de progreso semanal</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
-<tr>
-    <td>03</td>
-    <td>Bitacora</td>
-    <td>2023-11-02 09:15</td>
-    <td>Carlos Ruiz</td>
-    <td>Reporte de incidencias técnicas</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
-<tr>
-    <td>04</td>
-    <td>Evaluacion</td>
-    <td>2023-11-03 14:00</td>
-    <td>Ana López</td>
-    <td>Resultados de evaluación práctica</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
-<tr>
-    <td>05</td>
-    <td>Bitacora</td>
-    <td>2023-11-04 11:45</td>
-    <td>Pedro Sánchez</td>
-    <td>Seguimiento de actividades</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
-<tr>
-    <td>06</td>
-    <td>Evaluacion</td>
-    <td>2023-11-05 16:20</td>
-    <td>Laura Díaz</td>
-    <td>Evaluación final teórica</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
-<tr>
-    <td>07</td>
-    <td>Bitacora</td>
-    <td>2023-11-06 13:10</td>
-    <td>Jorge Martínez</td>
-    <td>Registro de visitas técnicas</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
-<tr>
-    <td>08</td>
-    <td>Evaluacion</td>
-    <td>2023-11-07 10:00</td>
-    <td>Sofía Herrera</td>
-    <td>Evaluación de habilidades blandas</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
-<tr>
-    <td>09</td>
-    <td>Bitacora</td>
-    <td>2023-11-08 15:30</td>
-    <td>Diego Ramírez</td>
-    <td>Reporte de mantenimiento</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
-<tr>
-    <td>10</td>
-    <td>Evaluacion</td>
-    <td>2023-11-09 12:00</td>
-    <td>Valeria Castro</td>
-    <td>Evaluación de seguridad</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
-<tr>
-    <td>11</td>
-    <td>Bitacora</td>
-    <td>2023-11-10 08:45</td>
-    <td>Ricardo Mendoza</td>
-    <td>Control de asistencia</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
-<tr>
-    <td>12</td>
-    <td>Evaluacion</td>
-    <td>2023-11-11 17:00</td>
-    <td>Gabriela Rojas</td>
-    <td>Evaluación final integral</td>
-    <td>
-        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarPrograma">
-            <i class="fas fa-pen"></i>
-        </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-trash"></i>
-        </button>
-        <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#modalEliminarPrograma">
-            <i class="fas fa-file-pdf"></i>
-        </button>
-    </td>
-</tr>
+                               <?php
+
+                                $valor = null;
+                                $seguimiento = ControladorSeguimiento::ctrMostrarSeguimiento($valor);
+                                
+                                foreach ($seguimiento as $key => $value) {
+                                    echo '<tr>';
+                                    echo '<td>' . $value["ID_seguimiento"] . '</td>';
+                                    
+                                    echo '<td>' . $value["nombre_archivo"] . '</td>';
+                                    echo '<td>' . $value["fecha"] . '</td>';
+                                    echo '<td>' . $value["tipo_formato"] . '</td>';
+                                    echo '<td>' . $value["observaciones"] . '</td>';
+
+                                    echo '<td><button class="btn btn-sm btn-primary btnValidarSeguimiento" id_seguimiento="'. $value["ID_seguimiento"] . '"data-toggle="modal" data-target="#modalValidarSeguimiento">Validar</button></td>';
+                                    
+                                    echo  '<td><button class="btn btn-xs btn-primary" btnValidarSeguimiento" id_seguimiento="'. $value["ID_seguimiento"] . '"data-toggle="modal" data-target="#modalEditarSeguimineto"><i class="fas fa-pen"></i></button>
+                                        <button class="btn btn-xs btn-danger" btnValidarSeguimiento" id_seguimiento="'. $value["ID_seguimiento"] . '"data-toggle="modal" data-target="#modalEliminarSeguimiento"><i class="fas fa-trash"></i></button>
+                                        <button class="btn btn-xs btn-warning" btnValidarSeguimiento" id_seguimiento="'. $value["ID_seguimiento"] . '"data-toggle="modal" data-target="#modalVisualizarSeguimiento"><i class="fas fa-eye"></i></button>
+                                        </td>';
+                                    echo '</tr>';
+                                }
+                               
+
+                                ?>
 
 
 
@@ -271,7 +81,7 @@
 
 <!-- =====================================================================
 
-MODAL AGREGAR Programa
+MODAL AGREGAR 
 
 ====================================================================== -->
 
@@ -306,7 +116,7 @@ MODAL AGREGAR Programa
 
 <!-- =====================================================================
 
-MODAL EDITAR Programa
+MODAL EDITAR 
 
 ====================================================================== -->
 
@@ -340,7 +150,7 @@ MODAL EDITAR Programa
 
 <!-- =====================================================================
 
-MODAL Eliminar Programa
+MODAL Eliminar 
 
 ====================================================================== -->
 
