@@ -27,15 +27,28 @@
         }//fin de la funcion mdlMostrarTablaSeguimiento
 
 
+static public function mdlIngresarSeguimiento($tabla, $datos) {
+    try {
+        $stmt = Conexion::conectar()->prepare(
+            "INSERT INTO $tabla(nombre_archivo, tipo_formato, observaciones, archivo, fecha) 
+             VALUES (:nombre_archivo, :tipo_formato, :observaciones, :archivo, NOW())"
+        );
+        $stmt->bindParam(":nombre_archivo", $datos["nombre_archivo"], PDO::PARAM_STR);
+        $stmt->bindParam(":tipo_formato", $datos["tipo_formato"], PDO::PARAM_STR);
+        $stmt->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
+        $stmt->bindParam(":archivo", $datos["archivo"], PDO::PARAM_STR);
 
-
-
-
-
-
-
-
-        
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    } finally {
+        $stmt = null;
+    }
+}
 
         static public function mdlIngresarPrograma($tabla, $datos){
             try {
