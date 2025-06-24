@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="col-sm-12">
-                    <button class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modalAgregarPrograma"> Subir PDF</button>
+                    <button class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modalAgregarPdf"> Subir PDF</button>
                 </div>
 
 
@@ -85,25 +85,32 @@ MODAL AGREGAR
 
 ====================================================================== -->
 
-                    <div class="modal fade" id="modalAgregarPrograma">
+                    <div class="modal fade" id="modalAgregarPdf">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Agregar programa de formación</h4>
+                                    <h4 class="modal-title">Subir PDF</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
 
-                                <form action="" method="POST">
+                                <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="modal-body">
-                                        <label for="descripcionprograma">Observacion</label>
-                                        <input type="text" class="form-control" name="descripcionPrograma" required>
+                                        <label for="descripcionObservacion">Archivo</label>
+                                        <input type="file" accept=".pdf" name="archivoPrograma" class="form-control" required>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label for="descripcionObservacion">Observacion</label>
+                                        <input type="text" class="form-control" name="descripcionObservacion" required>
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-primary">Guardar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
+                                    <?php
+                                        ControladorSeguimiento::ctrCrearSeguimiento();
+                                    ?>
                                 </form>
                             </div>
                             <!-- /.modal-content -->
@@ -111,7 +118,6 @@ MODAL AGREGAR
                         <!-- /.modal-dialog -->
                     </div>
                     <!-- /.modal -->
-
 
 
 <!-- =====================================================================
