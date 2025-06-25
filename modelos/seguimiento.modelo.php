@@ -105,7 +105,24 @@ static public function mdlIngresarSeguimiento($tabla, $datos) {
 
         }//fin metodo mdlCambiarEstadoPrograma
 
+// MÉTODO PARA EDITAR OBSERVACIÓN DE SEGUIMIENTO
+static public function mdlEditarObservacion($id, $observacion) {
+    try {
+        $stmt = Conexion::conectar()->prepare("UPDATE seguimiento SET observaciones = :observacion WHERE ID_seguimiento = :id");
+        $stmt->bindParam(":observacion", $observacion, PDO::PARAM_STR);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    } finally {
+        $stmt = null;
+    }
+}
 
     }
 

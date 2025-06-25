@@ -1,5 +1,7 @@
 <?php
 
+
+
 class ControladorSeguimiento
 {
 
@@ -65,6 +67,14 @@ class ControladorSeguimiento
     }
 }
 
+/*=============================================
+    EDITAR OBSERVACIÓN
+=============================================*/
+static public function ctrEditarObservacion($id, $observacion)
+{
+    $respuesta = ModeloSeguimiento::mdlEditarObservacion($id, $observacion);
+    return $respuesta;
+}
 
 
     static public function ctrCambiarEstadoPrograma($valor, $estado)

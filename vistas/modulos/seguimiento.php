@@ -61,10 +61,27 @@
 
                                     echo '<td><button class="btn btn-sm btn-primary btnValidarSeguimiento" id_seguimiento="'. $value["ID_seguimiento"] . '"data-toggle="modal" data-target="#modalValidarSeguimiento">Validar</button></td>';
                                     
-                                    echo  '<td><button class="btn btn-xs btn-primary" btnValidarSeguimiento" id_seguimiento="'. $value["ID_seguimiento"] . '"data-toggle="modal" data-target="#modalEditarSeguimineto"><i class="fas fa-pen"></i></button>
-                                        <button class="btn btn-xs btn-danger" btnValidarSeguimiento" id_seguimiento="'. $value["ID_seguimiento"] . '"data-toggle="modal" data-target="#modalEliminarSeguimiento"><i class="fas fa-trash"></i></button>
-                                        <button class="btn btn-xs btn-warning" btnValidarSeguimiento" id_seguimiento="'. $value["ID_seguimiento"] . '"data-toggle="modal" data-target="#modalVisualizarSeguimiento"><i class="fas fa-eye"></i></button>
-                                        </td>';
+                                    echo '<td>
+                                        <button class="btn btn-xs btn-primary btnEditObservacion" 
+                                            data-id="' . $value["ID_seguimiento"] . '" 
+                                            data-observacion="' . htmlspecialchars($value["observaciones"], ENT_QUOTES, "UTF-8") . '">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
+                                        <button class="btn btn-xs btn-danger" 
+                                            data-toggle="modal" 
+                                            data-target="#modalEliminarSeguimiento" 
+                                            data-id="' . $value["ID_seguimiento"] . '">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+
+                                        <button class="btn btn-xs btn-warning" 
+                                            data-toggle="modal" 
+                                            data-target="#modalVisualizarSeguimiento" 
+                                            data-id="' . $value["ID_seguimiento"] . '">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </td>';
                                     echo '</tr>';
                                 }
                                
@@ -187,5 +204,70 @@ MODAL Eliminar
             </div>
         </div>
     </section>
+
+    <!-- =====================================
+MODAL EDITAR OBSERVACIÓN
+===================================== -->
+<div class="modal fade" id="modalEditarObservacion" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="formEditarObservacion">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Observación</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id" id="editar_id">
+          <div class="form-group">
+            <label for="editar_observacion">Observación</label>
+            <input type="text" class="form-control" name="observacion" id="editar_observacion" required>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-success">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+$(document).ready(function () {
+    // Cuando se hace clic en el ícono de editar
+    $(document).on("click", ".btnEditObservacion", function () {
+        var id = $(this).data("id");
+        var observacion = $(this).data("observacion");
+
+        $("#editar_id").val(id);
+        $("#editar_observacion").val(observacion);
+
+        $("#modalEditarObservacion").modal("show");
+    });
+
+    // Enviar formulario por AJAX
+    $("#formEditarObservacion").on("submit", function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "ajax/seguimiento.ajax.php", // Asegúrate de que esta ruta sea válida
+            data: $(this).serialize(),
+            success: function (respuesta) {
+                if (respuesta.trim() === "ok") {
+                    alert("Observación actualizada correctamente.");
+                    $("#modalEditarObservacion").modal("hide");
+                    location.reload();
+                } else {
+                    alert("Error al actualizar la observación: " + respuesta);
+                }
+            },
+            error: function () {
+                alert("Error al conectar con el servidor.");
+            }
+        });
+    });
+});
+
+
+</script>
 
 </div>
