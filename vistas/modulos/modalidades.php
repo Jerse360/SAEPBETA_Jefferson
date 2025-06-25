@@ -31,50 +31,35 @@
 
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                           <thead>
+    <tr>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+    </tr>
+</thead>
+<tbody>
+    <?php
+    $modalidades = ControladorModalidades::ctrMostrarModalidades();
+    if ($modalidades) {
+        foreach ($modalidades as $modalidad) {
+            echo '<tr>';
+            echo '<td>' . htmlspecialchars($modalidad["ID_modalidad"]) . '</td>';
+            echo '<td>' . htmlspecialchars($modalidad["modalidad"]) . '</td>';
+            echo '<td>
+                    <button class="btn btn-xs btn-primary btnEditarModalidad" 
+                            idModalidad="' . $modalidad["ID_modalidad"] . '" 
+                            data-toggle="modal" data-target="#modalEditarmodalidad">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                  </td>';
+            echo '</tr>';
+        }
+    }
+    ?>
+</tbody>
 
-                                <tr>                                    
-                                    <td>Vinculacion laboral</td>                                    
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarmodalidad"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>                                    
-                                    <td>Pasantias</td>                                   
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarmodalidad"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>                                    
-                                    <td>Proyecto Productivo</td>                                    
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarmodalidad"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>                                    
-                                    <td>Monitorias</td>                                    
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarmodalidad"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                <tr>                            
-                                    <td>Contrato aprendizaje</td>                                    
-                                    <td><button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEditarmodalidad"><i class="fas fa-pencil-alt"></i></button></td>
-                                </tr>
-                                
-                                <!-- 
-                                <?php for ($i = 1; $i <= 50; $i++): ?>
-                                    <tr>
-                                        <td><?php echo "SENA-" . str_pad($i, 3, "0", STR_PAD_LEFT); ?></td>
-                                        <td><?php echo "modalidad de Formación " . $i; ?></td>
-                                        <td><?php echo ($i % 2 == 0) ? "Activo" : "Inactivo"; ?></td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <?php endfor; ?> -->
 
-                            </tbody>
                         </table>
                     </div>
 
@@ -85,62 +70,69 @@
 
 </div>
 
-<!-- ==========
- modal agregar modalidad
- =============== -->
+<!-- ========== MODAL AGREGAR MODALIDAD ========== -->
 
- <div class="modal fade" id="modalAgregarmodalidad">
-        <div class="modal-dialog">
-          <div class="modal-content">
+<div class="modal fade" id="modalAgregarModalidad">
+    <div class="modal-dialog">
+        <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Agregar modalidad de formación</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                <h4 class="modal-title">Agregar modalidad de formación</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            
-            <form action="" method="POST">
-             <div class="modal-body">
-                <label for="descripcionmodalidad">Descripción</label>
-                <input type="text" class="form-control" name="descripcionmodalidad" required>  
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Guardar</button>
-            </div>
-        </form>
-          </div>
-          <!-- /.modal-content -->
-          </div>
-        <!-- /.modal-dialog -->
-      </div>
 
-    <!-- ==========
- modal editar modalidad
- =============== -->
+            <form method="POST">
+  <div class="modal-body">
+    <label for="nombreModalidad">Nombre</label>
+    <input type="text" class="form-control" name="nombreModalidad" required>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </div>
+  <?php
+    $crearModalidad = new ControladorModalidades();
+    $crearModalidad->ctrCrearModalidad();
+  ?>
+</form>
 
- <div class="modal fade" id="modalEditarmodalidad">
-        <div class="modal-dialog">
-          <div class="modal-content">
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+    <!-- ========== MODAL EDITAR MODALIDAD ========== -->
+
+<div class="modal fade" id="modalEditarmodalidad">
+    <div class="modal-dialog">
+        <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Agregar modalidad de formación</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                <h4 class="modal-title">Editar modalidad de formación</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            
-            <form action="" method="POST">
-             <div class="modal-body">
-                <label for="descripcionmodalidad">Descripción</label>
-                <input type="text" class="form-control" name="descripcionmodalidad" required>  
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Guardar</button>
-            </div>
-        </form>
-          </div>
-          <!-- /.modal-content -->
-          </div>
-        <!-- /.modal-dialog -->
-      </div>  
+
+            <form method="POST">
+                <div class="modal-body">
+                    <input type="hidden" class="form-control" id="editIdModalidad" name="editIdModalidad" required>
+
+                    <label for="editNombreModalidad">Nombre</label>
+                    <input type="text" class="form-control" id="editNombreModalidad" name="editNombreModalidad" required>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+
+                <?php
+                    $editar = new ControladorModalidades();
+                    $editar->ctrEditarModalidad();
+                ?>
+            </form>
+        </div>
+    </div>
+</div>

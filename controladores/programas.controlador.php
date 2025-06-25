@@ -6,7 +6,7 @@
         MOSTRAR PROGRAMAS
         =============================================*/
 
-        static public function ctrMostrarProgramas($valor){
+        static public function ctrMostrarProgramas($valor = null){
 
             $respuesta = ModeloProgramas::mdlMostrarProgramas($valor);
             return $respuesta;
