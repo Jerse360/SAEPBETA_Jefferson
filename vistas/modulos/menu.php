@@ -1,21 +1,45 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="vistas/index3.html" class="brand-link">
-      <img src="vistas/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">SAEP</span>
-    </a>
+<style>
+  aside.main-sidebar, 
+aside.main-sidebar a, 
+aside.main-sidebar .brand-text {
+  color: #fff !important;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link img {
+  width: 24px;         /* Tamaño fijo */
+  height: 24px;
+  margin-right: 15px;  /* Espacio con el texto */
+  flex-shrink: 0;      /* Impide que el ícono se reduzca si falta espacio */
+}
+
+.nav-link p {
+  margin: 0; /* Elimina márgenes por defecto */
+  font-size: 18px; /* Tamaño de fuente */
+}
+
+
+</style>
+
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #39A900;">
+
+<!-- Brand Logo -->
+<a href="inicio" class="brand-link" style="display: flex; align-items: center; gap: 20px;">
+  <img src="vistas/img/logoSena.png"
+       alt="Logo Sena"
+       style="width: 60px; height: 60px; object-fit: contain; object-position: center; background-color: transparent;">
+  <span class="brand-text font-weight-light" style="color: #fff; font-size: 35px;">SAEP</span>
+</a>
+
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="vistas/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
-      </div>
+      
 
 
 
@@ -161,7 +185,15 @@
                 Seguimiento
               </p>
             </a>
-          </li>            
+          </li>         
+      
+          
+          <li class="nav-item">
+            <a href="editarperfil" class="nav-link">
+              <img src="vistas/img/ico-perfil.png" alt="Icono Perfil">
+              <p>Mi Perfil</p>
+            </a>
+          </li>
 
 
 
