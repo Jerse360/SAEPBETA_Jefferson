@@ -114,6 +114,9 @@ session_start();
 
   <script src="vistas/js/plantilla.js"></script>
   <script src="vistas/js/programas.js"></script>
+  <script src="vistas/js/modalidades.js"></script>
+  <script src="vistas/js/fichas.js"></script>
+
 
 </body>
 
