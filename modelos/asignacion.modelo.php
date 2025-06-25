@@ -7,8 +7,15 @@ class ModeloAsignacion {
     static public function mdlMostrarAprendices() {
         $stmt = Conexion::conectar()->prepare("
             SELECT 
-                a.ID_numeroAprendices, u.numero, u.nombres, u.apellidos, f.codigo AS ficha,
-                e.nombre_empresa, m.modalidad, i.nombres AS nombre_instructor, i.apellidos AS apellido_instructor,
+                a.ID_numeroAprendices,
+                u.numero AS numero_aprendiz,
+                u.nombres AS nombres_aprendiz,
+                u.apellidos AS apellidos_aprendiz,
+                f.codigo AS ficha,
+                e.nombre_empresa,
+                m.modalidad,
+                i.nombres AS nombre_instructor,
+                i.apellidos AS apellido_instructor,
                 a.ID_instructor
             FROM aprendices a
             JOIN usuarios u ON a.ID_usuarios = u.ID_usuarios
@@ -18,7 +25,9 @@ class ModeloAsignacion {
             LEFT JOIN usuarios i ON a.ID_instructor = i.ID_usuarios
         ");
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = null; // Liberar recurso
+        return $resultado;
     }
 
     static public function mdlMostrarEvaluadores() {
@@ -28,7 +37,9 @@ class ModeloAsignacion {
             WHERE ID_rol = 2
         ");
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = null;
+        return $resultado;
     }
 
     static public function mdlAsignarEvaluador($idAprendiz, $idEvaluador) {
@@ -39,7 +50,9 @@ class ModeloAsignacion {
         ");
         $stmt->bindParam(":idEvaluador", $idEvaluador, PDO::PARAM_INT);
         $stmt->bindParam(":idAprendiz", $idAprendiz, PDO::PARAM_INT);
-        return $stmt->execute() ? "ok" : "error";
+        $exito = $stmt->execute() ? "ok" : "error";
+        $stmt = null;
+        return $exito;
     }
 
     static public function mdlEliminarEvaluador($idAprendiz) {
@@ -49,6 +62,8 @@ class ModeloAsignacion {
             WHERE ID_numeroAprendices = :idAprendiz
         ");
         $stmt->bindParam(":idAprendiz", $idAprendiz, PDO::PARAM_INT);
-        return $stmt->execute() ? "ok" : "error";
+        $exito = $stmt->execute() ? "ok" : "error";
+        $stmt = null;
+        return $exito;
     }
 }
