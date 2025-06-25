@@ -12,21 +12,21 @@ session_start();
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="vistas/plugins/fontawesome-free/css/all.min.css">
-  
+
   <!-- DataTables -->
   <link rel="stylesheet" href="vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="vistas/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  
+
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="vistas/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-  
+
   <!-- Toastr -->
   <link rel="stylesheet" href="vistas/plugins/toastr/toastr.min.css">
-  
+
   <!-- Theme style -->
   <link rel="stylesheet" href="vistas/dist/css/adminlte.min.css">
 
@@ -83,10 +83,10 @@ session_start();
   ?>
 
   <!-- SCRIPTS - Cargados en el orden correcto -->
-  
+
   <!-- jQuery PRIMERO -->
   <script src="vistas/plugins/jquery/jquery.min.js"></script>
-  
+
   <!-- Bootstrap 4 -->
   <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -103,10 +103,12 @@ session_start();
   <script src="vistas/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="vistas/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="vistas/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="vistas/plugins/chart.js/Chart.min.js"></script>
+  <script src="vistas/plugins/fontawesome/js/all.min.js"></script>
 
   <!-- SweetAlert2 -->
   <script src="vistas/plugins/sweetalert2/sweetalert2.min.js"></script>
-  
+
   <!-- Toastr -->
   <script src="vistas/plugins/toastr/toastr.min.js"></script>
 
@@ -119,23 +121,30 @@ session_start();
 
   <!-- Script para asegurar que funcione el dropdown -->
   <script>
-  $(document).ready(function() {
-    // Inicializar dropdown manualmente si es necesario
-    $('.dropdown-toggle').dropdown();
-    
-    // Verificar que Bootstrap esté cargado
+    $(document).ready(function() {
+    // Solo inicializar si Bootstrap no está funcionando automáticamente
     if (typeof $().dropdown === 'undefined') {
-      console.error('Bootstrap dropdown no está disponible');
+        console.error('Bootstrap dropdown no está disponible');
     }
     
-    // Debug: Verificar clicks en el dropdown
-    $('.dropdown-toggle').on('click', function(e) {
-      console.log('Dropdown clicked');
-      e.preventDefault();
-      $(this).next('.dropdown-menu').toggle();
+    // Remover el manejo manual que interfiere
+    // $('.dropdown-toggle').dropdown(); // Bootstrap ya maneja esto automáticamente
     });
-  });
   </script>
+
+  <?php
+  if (
+    isset($_SESSION["iniciarSesion"]) &&
+    $_SESSION["iniciarSesion"] == "ok" &&
+    isset($_GET["ruta"]) &&
+    $_GET["ruta"] == "inicio" &&
+    isset($_SESSION['rol']) &&
+    $_SESSION['rol'] == "aprendiz"
+  ): ?>
+    <!-- JS solo para inicio y aprendices -->
+    <script src="vistas/js/inicioaprendiz.js"></script>
+  <?php endif; ?>
+
 
 </body>
 
