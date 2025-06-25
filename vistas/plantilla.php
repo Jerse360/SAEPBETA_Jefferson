@@ -12,48 +12,23 @@ session_start();
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="vistas/plugins/fontawesome-free/css/all.min.css">
+  
   <!-- DataTables -->
   <link rel="stylesheet" href="vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="vistas/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  
+  <!-- SweetAlert2 -->
   <link rel="stylesheet" href="vistas/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  
   <!-- Toastr -->
   <link rel="stylesheet" href="vistas/plugins/toastr/toastr.min.css">
+  
   <!-- Theme style -->
   <link rel="stylesheet" href="vistas/dist/css/adminlte.min.css">
-
-  <!-- jQuery -->
-  <script src="vistas/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
-  <!-- DataTables  & Plugins -->
-  <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="vistas/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="vistas/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="vistas/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="vistas/plugins/jszip/jszip.min.js"></script>
-  <script src="vistas/plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="vistas/plugins/pdfmake/vfs_fonts.js"></script>
-  <script src="vistas/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-  <script src="vistas/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-  <script src="vistas/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-  <!-- SweetAlert2 -->
-  <script src="vistas/plugins/sweetalert2/sweetalert2.min.js"></script>
-  <!-- Toastr -->
-  <script src="vistas/plugins/toastr/toastr.min.js"></script>
-
-  <!-- AdminLTE App -->
-  <script src="vistas/dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <!-- <script src="vistas/dist/js/demo.js"></script> -->
-
 
 </head>
 
@@ -62,14 +37,13 @@ session_start();
 
   <?php
 
-
   if (isset($_SESSION["iniciarSesion"])  &&  $_SESSION["iniciarSesion"] == "ok") {
 
     echo '<script>
       document.addEventListener("DOMContentLoaded", function(){
         document.body.classList.remove("login-page");
-  });    
-        </script>';
+      });    
+    </script>';
 
     echo '<div class="wrapper">';
 
@@ -106,12 +80,62 @@ session_start();
     include "modulos/login.php";
   }
 
-
   ?>
 
+  <!-- SCRIPTS - Cargados en el orden correcto -->
+  
+  <!-- jQuery PRIMERO -->
+  <script src="vistas/plugins/jquery/jquery.min.js"></script>
+  
+  <!-- Bootstrap 4 -->
+  <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <!-- DataTables & Plugins -->
+  <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="vistas/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="vistas/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="vistas/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="vistas/plugins/jszip/jszip.min.js"></script>
+  <script src="vistas/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="vistas/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="vistas/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="vistas/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="vistas/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+  <!-- SweetAlert2 -->
+  <script src="vistas/plugins/sweetalert2/sweetalert2.min.js"></script>
+  
+  <!-- Toastr -->
+  <script src="vistas/plugins/toastr/toastr.min.js"></script>
+
+  <!-- AdminLTE App -->
+  <script src="vistas/dist/js/adminlte.min.js"></script>
+
+  <!-- Scripts personalizados -->
   <script src="vistas/js/plantilla.js"></script>
   <script src="vistas/js/programas.js"></script>
+
+  <!-- Script para asegurar que funcione el dropdown -->
+  <script>
+  $(document).ready(function() {
+    // Inicializar dropdown manualmente si es necesario
+    $('.dropdown-toggle').dropdown();
+    
+    // Verificar que Bootstrap esté cargado
+    if (typeof $().dropdown === 'undefined') {
+      console.error('Bootstrap dropdown no está disponible');
+    }
+    
+    // Debug: Verificar clicks en el dropdown
+    $('.dropdown-toggle').on('click', function(e) {
+      console.log('Dropdown clicked');
+      e.preventDefault();
+      $(this).next('.dropdown-menu').toggle();
+    });
+  });
+  </script>
 
 </body>
 
